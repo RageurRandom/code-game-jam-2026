@@ -11,9 +11,19 @@ config_version=5
 [application]
 
 config/name="Game Jam 2026"
+run/main_scene="uid://boskggorwimm3"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+EventBus="*res://autoload/event_bus.gd"
+JuicyPersist="*res://addons/juicy-effect/Logic/autoload/Juicy_persist.gd"
 
 [dotnet]
 
 project/assembly_name="Game Jam 2026"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/juicy-effect/plugin.cfg")
