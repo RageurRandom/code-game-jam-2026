@@ -5,6 +5,7 @@ class_name EnemyLife extends Node
 @export var click_damage = 99
 
 signal this_enemy_hit
+signal this_enemy_death
 
 func _ready() -> void:
 	pass
@@ -19,16 +20,17 @@ func _on_hit():
 
 
 func _on_enemy_death():
+	this_enemy_death.emit()
 	EventBus.enemy_death.emit()
-	var parent:Node = get_parent()
-	parent.hide()
+	#var parent:Node = get_parent()
+	#parent.hide() #TODO attendre anim
 
 
 func _process_damage():
 	life -= click_damage #TODO
 
 
-func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_enemy_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			_on_hit()

@@ -1,26 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://0mo1t8hxe8tf"]
+[gd_scene load_steps=6 format=3 uid="uid://0mo1t8hxe8tf"]
 
+[ext_resource type="Script" uid="uid://c4sga02n1msb7" path="res://scripts/enemy/base_enemy_movement.gd" id="1_fof03"]
 [ext_resource type="Script" uid="uid://bqx8q7u1o36gn" path="res://scripts/enemy/enemy_life.gd" id="1_lin2w"]
-[ext_resource type="Texture2D" uid="uid://bs5ptslwcyfsi" path="res://icon.svg" id="2_w7fs4"]
+[ext_resource type="SpriteFrames" uid="uid://bmy2sxr8fh3pn" path="res://assets/anim/beer_enemy_frames.tres" id="2_fof03"]
 [ext_resource type="Script" uid="uid://d0w2f1j3ca7o8" path="res://scripts/enemy/enemy_sprite.gd" id="3_w7fs4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ldt5m"]
 size = Vector2(32, 32)
 
-[node name="Enemy" type="Node2D"]
+[node name="Enemy" type="CharacterBody2D"]
+input_pickable = true
+motion_mode = 1
+script = ExtResource("1_fof03")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_w7fs4")
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_fof03")
+frame_progress = 0.016625239
 script = ExtResource("3_w7fs4")
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_ldt5m")
 
 [node name="EnemyLife" type="Node" parent="."]
 script = ExtResource("1_lin2w")
 
-[connection signal="input_event" from="Area2D" to="EnemyLife" method="_on_area_2d_input_event"]
-[connection signal="this_enemy_hit" from="EnemyLife" to="Sprite2D" method="_on_this_enemy_hit"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ldt5m")
+
+[connection signal="input_event" from="." to="EnemyLife" method="_on_enemy_input_event"]
+[connection signal="this_enemy_death" from="EnemyLife" to="Sprite" method="_on_this_enemy_death"]
+[connection signal="this_enemy_hit" from="EnemyLife" to="Sprite" method="_on_this_enemy_hit"]

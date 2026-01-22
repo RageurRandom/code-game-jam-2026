@@ -1,9 +1,11 @@
-extends Sprite2D
+extends AnimatedSprite2D
 
 @export var clignotage:float = 1
 
 func _on_this_enemy_hit() -> void:
-	print(self.modulate)
-	self.modulate = Color(1, 0, 0)
-	await self.get_tree().create_timer(clignotage).timeout
-	self.modulate = Color(1, 1, 1)
+	play("damaged")
+
+
+func _on_this_enemy_death() -> void:
+	self.animation_finished.connect(hide)
+	play("exploding")
