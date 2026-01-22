@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://btlr4iomy7ch6"]
+
+[sub_resource type="GDScript" id="GDScript_rvajl"]
+script/source = "extends Area2D
+
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rvajl"]
+radius = 1.0
+
+[node name="BaseBullet" type="Area2D" groups=["bullet"]]
+script = SubResource("GDScript_rvajl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rvajl")

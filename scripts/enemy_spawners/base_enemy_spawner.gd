@@ -1,12 +1,12 @@
 extends Node2D
 
-@export var timer:float = 1
-const enemy_path:String = "res://scenes/entity/base_enemy.tscn"
+@export var timer:float = 5
+@export var enemy_path:String = "res://scenes/entity/base_enemy.tscn"
 
 var enemy:PackedScene = null
 
 func _ready() -> void:
-	enemy = preload(enemy_path)
+	enemy = load(enemy_path)
 	
 	while true:
 		await get_tree().create_timer(timer).timeout
