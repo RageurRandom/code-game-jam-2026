@@ -1,9 +1,21 @@
 extends ShapeCast2D
 
-const duration = 1/60
-
 func _ready() -> void:
-	get_tree().create_timer(duration).timeout.connect(_on_duration_finished)
+	force_shapecast_update()
 	
-func _on_duration_finished():
-	queue_free() #destroy node
+	var collisionned_bodies:Array = collision_result.map(
+		func (dict):
+			return dict["collider"]
+	)
+	
+	collisionned_bodies.filter(
+		func (col:PhysicsBody2D): return col.is_in_group("enemy")
+	).map(
+		func(enemy:CharacterBody2D):
+			var health:EnemyLife = enemy.find_child("EnemyLife")
+			health.on_hit()
+	)
+	
+	queue_free()
+	
+	

@@ -11,11 +11,9 @@ func _ready() -> void:
 	while true:
 		await get_tree().create_timer(timer).timeout
 		spawn()
-		print("spawned")
 
 
 func spawn():
-	print("SPAWNING")
 	var new_enemy:Node2D = enemy.instantiate(PackedScene.GEN_EDIT_STATE_DISABLED)
 	new_enemy.position = Vector2(position.x, position.y) #TODO randomiser X
 	get_tree().current_scene.add_child(new_enemy)
