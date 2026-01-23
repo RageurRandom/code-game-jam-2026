@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bh38bnhutk2uu" path="res://assets/UI/upgrade_button.tres" id="2_a8y0u"]
 [ext_resource type="Script" uid="uid://du6vawxogown8" path="res://scripts/HUD/pause_menu.gd" id="3_jkv2x"]
 [ext_resource type="Script" uid="uid://tsb1lnxosj46" path="res://scripts/score_tracker.gd" id="3_sugp2"]
-[ext_resource type="Script" uid="uid://pfgonfr6d5du" path="res://scripts/HUD/shop.gd" id="4_jkv2x"]
+[ext_resource type="Script" uid="uid://pfgonfr6d5du" path="res://scripts/HUD/weapon_shop.gd" id="4_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://lxh1031e772h" path="res://scenes/spawners/base_enemy_spawner.tscn" id="4_jyhfs"]
 [ext_resource type="Texture2D" uid="uid://drqmurnfprnab" path="res://assets/background/background_bleu.png" id="5_tbgi4"]
 [ext_resource type="Script" uid="uid://braouel88xdy1" path="res://scripts/sound.gd" id="5_tipki"]
@@ -54,31 +54,48 @@ offset_bottom = 309.375
 scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("2_a8y0u")
 
-[node name="pause_menu" type="Control" parent="HUD"]
+[node name="pause_menu" type="TabContainer" parent="HUD"]
 process_mode = 3
-visible = false
+clip_contents = true
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = 111.0
+offset_top = 40.0
+offset_right = 476.0
+offset_bottom = 240.0
 grow_horizontal = 2
 grow_vertical = 2
+current_tab = 0
 script = ExtResource("3_jkv2x")
 
-[node name="ItemList" type="ItemList" parent="HUD/pause_menu"]
-layout_mode = 0
-offset_left = 225.0
-offset_top = 100.0
-offset_right = 302.0
-offset_bottom = 162.0
+[node name="weapon_shop" type="ItemList" parent="HUD/pause_menu" node_paths=PackedStringArray("shootManager", "scoreTracker")]
+layout_mode = 2
 auto_width = true
 auto_height = true
-item_count = 2
-item_0/text = "Test"
-item_1/text = "Shotgun"
 script = ExtResource("4_jkv2x")
+shootManager = NodePath("../../../ShootManager")
+scoreTracker = NodePath("../../../Score")
+metadata/_tab_index = 0
+
+[node name="CheckButton" type="Button" parent="HUD/pause_menu/weapon_shop"]
+layout_mode = 0
+offset_left = 155.0
+offset_top = 134.0
+offset_right = 199.0
+offset_bottom = 165.0
+text = "BUY"
+
+[node name="boost_shop" type="ItemList" parent="HUD/pause_menu"]
+visible = false
+layout_mode = 2
+item_count = 1
+item_0/text = "TODO"
+metadata/_tab_index = 1
 
 [node name="balloon" parent="." instance=ExtResource("1_o5qli")]
 position = Vector2(139, 430)
@@ -145,4 +162,6 @@ timer = 7.0
 randomize_x = true
 
 [connection signal="pressed" from="HUD/upgrade_menu" to="HUD/pause_menu" method="_on_upgrade_menu_pressed"]
+[connection signal="item_selected" from="HUD/pause_menu/weapon_shop" to="HUD/pause_menu/weapon_shop" method="_on_item_selected"]
+[connection signal="pressed" from="HUD/pause_menu/weapon_shop/CheckButton" to="HUD/pause_menu/weapon_shop" method="_on_check_button_pressed"]
 [connection signal="score_changed" from="Score" to="HUD/ScoreLabel/CurrentScore" method="_on_score_score_changed"]

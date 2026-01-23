@@ -1,9 +1,9 @@
-extends Node
+class_name ShootManager extends Node
 
 @export var juicy_player:Juicy_player
 
-#var current_weapon:AWeapon = FirstWeapon.new()
-var current_weapon:AWeapon = ShotgunWeapon.new()
+var current_weapon:AWeapon = FirstWeapon.new()
+#var current_weapon:AWeapon = ShotgunWeapon.new()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:

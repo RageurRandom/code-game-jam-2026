@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwc7q6yury6x0"]
+[gd_scene load_steps=8 format=3 uid="uid://dwc7q6yury6x0"]
 
 [ext_resource type="Script" uid="uid://gmhg0mdupf4h" path="res://scripts/HUD/play_button.gd" id="1_4ignj"]
 [ext_resource type="Texture2D" uid="uid://cixujuxxg654e" path="res://assets/UI/play_button.tres" id="1_pyl7j"]
 [ext_resource type="Script" uid="uid://dn2tf258rudu3" path="res://addons/juicy-effect/Logic/Juicy_Player.gd" id="2_p6dhs"]
 [ext_resource type="Script" uid="uid://jeh7jneoe8hx" path="res://addons/juicy-effect/Effects/juicy_scale.gd" id="3_pyl7j"]
 [ext_resource type="Texture2D" uid="uid://blcge5st2kni2" path="res://assets/UI/Menu_demarage3.png" id="5_b3w7a"]
+[ext_resource type="Script" uid="uid://bf1vnufu7na6x" path="res://addons/midi/MidiPlayer.gd" id="6_4rr2b"]
 
 [sub_resource type="Curve" id="Curve_b3w7a"]
 _limits = [0.0, 2.0, 0.0, 0.6138614]
@@ -59,5 +60,13 @@ offset_top = -325.0
 offset_right = 589.0
 offset_bottom = 331.0
 mouse_filter = 2
+
+[node name="MidiPlayer" type="Node" parent="."]
+script = ExtResource("6_4rr2b")
+file = "res://assets/music/Ecran_titre.mid"
+playing = true
+volume_db = 0.0
+loop = true
+metadata/_custom_type_script = "uid://bf1vnufu7na6x"
 
 [connection signal="button_down" from="CenterContainer/Button" to="CenterContainer/Button" method="_on_button_down"]
