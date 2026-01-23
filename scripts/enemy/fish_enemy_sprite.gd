@@ -4,9 +4,6 @@ extends AnimatedSprite2D
 
 func _ready() -> void:
 	play("default")
-
-func _on_this_enemy_hit() -> void:
-	play("damaged")
 	
 
 func _process(delta: float) -> void:

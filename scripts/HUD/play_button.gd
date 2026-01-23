@@ -1,4 +1,4 @@
-extends Button
+extends TextureButton
 @export var juicy_player:Juicy_player
 
 

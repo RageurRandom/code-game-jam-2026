@@ -18,7 +18,8 @@ func _ready() -> void:
 	).map(
 		func(enemy:PhysicsBody2D):
 			var health:EnemyLife = enemy.find_child("EnemyLife")
-			health.on_hit(damage)
+			if health != null:
+				health.on_hit(damage)
 	)
 	
 	

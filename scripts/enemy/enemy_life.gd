@@ -2,6 +2,7 @@ class_name EnemyLife extends Node
 
 @export var life:float = 100
 @export var invincibility_time = 0.1
+@export var score_value = 100
 var can_be_hit = true
 
 signal this_enemy_hit
@@ -27,7 +28,8 @@ func on_hit(damage:float):
 
 func _on_enemy_death():
 	this_enemy_death.emit()
-	EventBus.enemy_death.emit()
+	EventBus.enemy_death.emit(score_value)
+	queue_free()
 
 
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6ulyh1xag1k8"
-path="res://.godot/imported/Impact_balles.png-f04a3f2872c15d2a56a0873d36d6befe.ctex"
+uid="uid://x7neljcj3xei"
+path="res://.godot/imported/timer-Sheet.png-874ebb374e336a6563667741ad41e2eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/weapon/base_bullet/Impact_balles.png"
-dest_files=["res://.godot/imported/Impact_balles.png-f04a3f2872c15d2a56a0873d36d6befe.ctex"]
+source_file="res://assets/UI/timer-Sheet.png"
+dest_files=["res://.godot/imported/timer-Sheet.png-874ebb374e336a6563667741ad41e2eb.ctex"]
 
 [params]
 

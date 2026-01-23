@@ -1,0 +1,32 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://hybhxc1jshng"]
+
+[ext_resource type="Texture2D" uid="uid://bgw1sooq8gjn" path="res://assets/weapon/shotgun/Tir_Barette_cal_50.png" id="1_dum0g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6elx"]
+atlas = ExtResource("1_dum0g")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4w1w"]
+atlas = ExtResource("1_dum0g")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jn3d"]
+atlas = ExtResource("1_dum0g")
+region = Rect2(64, 0, 32, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6elx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4w1w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5jn3d")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
