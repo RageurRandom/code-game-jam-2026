@@ -1,11 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://btlr4iomy7ch6"]
+[gd_scene load_steps=4 format=3 uid="uid://btlr4iomy7ch6"]
 
 [ext_resource type="Script" uid="uid://y64uwe4b1gly" path="res://scripts/bullets/base_bullet.gd" id="1_j2ebm"]
+[ext_resource type="SpriteFrames" uid="uid://r4xxcxyfpurs" path="res://assets/anim/base_bullet.tres" id="2_0kdlb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rvajl"]
 radius = 1.0
 
-[node name="BaseBullet" type="ShapeCast2D"]
+[node name="BaseBullet" type="ShapeCast2D" node_paths=PackedStringArray("sprite")]
 shape = SubResource("CircleShape2D_rvajl")
 target_position = Vector2(0, 0)
 script = ExtResource("1_j2ebm")
+sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_0kdlb")
+frame = 2
+frame_progress = 1.0

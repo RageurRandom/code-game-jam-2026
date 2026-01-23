@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Game Jam 2026"
-run/main_scene="uid://boskggorwimm3"
+run/main_scene="uid://dwc7q6yury6x0"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -19,6 +19,12 @@ config/icon="res://icon.svg"
 
 EventBus="*res://autoload/event_bus.gd"
 JuicyPersist="*res://addons/juicy-effect/Logic/autoload/Juicy_persist.gd"
+
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+window/stretch/scale=2.0
 
 [dotnet]
 

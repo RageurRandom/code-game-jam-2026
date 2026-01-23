@@ -1,8 +1,6 @@
 class_name EnemyLife extends Node
 
 @export var life:float = 100
-@export var sprite:Sprite2D
-@export var click_damage = 99
 @export var invincibility_time = 0.1
 var can_be_hit = true
 
@@ -12,13 +10,15 @@ signal this_enemy_death
 func _ready() -> void:
 	pass
 
-func on_hit():
+func on_hit(damage:float):
 	if can_be_hit:
 		can_be_hit = false
 		
 		EventBus.enemy_hit.emit()
 		this_enemy_hit.emit()
-		_process_damage()
+		
+		life -= damage
+		
 		if(life <= 0):
 			_on_enemy_death()
 		else:
@@ -30,8 +30,7 @@ func _on_enemy_death():
 	EventBus.enemy_death.emit()
 
 
-func _process_damage():
-	life -= click_damage #TODO
+
 
 
 #func _on_enemy_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:

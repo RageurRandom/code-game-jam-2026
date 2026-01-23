@@ -1,12 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://boskggorwimm3"]
+[gd_scene load_steps=13 format=3 uid="uid://boskggorwimm3"]
 
 [ext_resource type="Script" uid="uid://35cesntifdyd" path="res://scripts/HUD/score_display.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://0mo1t8hxe8tf" path="res://scenes/entity/base_enemy.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://tsb1lnxosj46" path="res://scripts/score_tracker.gd" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://lxh1031e772h" path="res://scenes/spawners/base_enemy_spawner.tscn" id="4_jyhfs"]
-[ext_resource type="Texture2D" uid="uid://drqmurnfprnab" path="res://assets/background_bleu.png" id="5_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://drqmurnfprnab" path="res://assets/background/background_bleu.png" id="5_tbgi4"]
+[ext_resource type="Script" uid="uid://braouel88xdy1" path="res://scripts/sound.gd" id="5_tipki"]
 [ext_resource type="Script" uid="uid://cooyac2pasvnt" path="res://scripts/shoot.gd" id="6_tefeu"]
-[ext_resource type="Texture2D" uid="uid://c0baq7ppcv5qd" path="res://assets/background_grass.png" id="7_o6xl0"]
+[ext_resource type="Texture2D" uid="uid://c0baq7ppcv5qd" path="res://assets/background/shitty_grass.png" id="7_o6xl0"]
+[ext_resource type="Script" uid="uid://dn2tf258rudu3" path="res://addons/juicy-effect/Logic/Juicy_Player.gd" id="9_choun"]
+[ext_resource type="Script" uid="uid://daj3g6w28mrxq" path="res://addons/juicy-effect/Effects/Juicy_effect_screen_shake.gd" id="10_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://bl2geixfl3ad4" path="res://scenes/entity/beer_enemy.tscn" id="11_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://celswhm072xny" path="res://scenes/spawners/beer_enemy_spawner.tscn" id="12_eb6dy"]
 
 [node name="Main" type="Node2D"]
 
@@ -31,25 +36,24 @@ text = "0000"
 script = ExtResource("1_0wfyh")
 
 [node name="Enemy" parent="." instance=ExtResource("1_o5qli")]
-position = Vector2(85, 279)
+position = Vector2(139, 430)
 
 [node name="Enemy2" parent="." instance=ExtResource("1_o5qli")]
-position = Vector2(456, 349)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
-zoom = Vector2(2, 2)
+position = Vector2(422, 465)
 
 [node name="Score" type="Node" parent="."]
 script = ExtResource("3_sugp2")
 
 [node name="base_enemy_spawner" parent="." instance=ExtResource("4_jyhfs")]
 position = Vector2(265, 343)
+timer = 2.0
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="sound" type="AudioStreamPlayer" parent="."]
+script = ExtResource("5_tipki")
 
-[node name="Node" type="Node" parent="."]
+[node name="ShootManager" type="Node" parent="." node_paths=PackedStringArray("juicy_player")]
 script = ExtResource("6_tefeu")
+juicy_player = NodePath("../on_shoot")
 
 [node name="background2" type="Node2D" parent="."]
 
@@ -64,5 +68,21 @@ z_index = -5
 position = Vector2(288, 295.99997)
 scale = Vector2(1.796875, 0.5722221)
 texture = ExtResource("7_o6xl0")
+
+[node name="on_shoot" type="Node" parent="."]
+script = ExtResource("9_choun")
+metadata/_custom_type_script = "uid://dn2tf258rudu3"
+
+[node name="Juicy_effect_screen_shake" type="Node" parent="on_shoot"]
+script = ExtResource("10_ya4ey")
+shake_strength = 1.5
+duration = 0.1
+metadata/_custom_type_script = "uid://daj3g6w28mrxq"
+
+[node name="Enemy3" parent="." instance=ExtResource("11_ya4ey")]
+position = Vector2(-21, 336)
+
+[node name="base_enemy_spawner2" parent="." instance=ExtResource("12_eb6dy")]
+position = Vector2(-32, 206)
 
 [connection signal="score_changed" from="Score" to="HUD/ScoreLabel/CurrentScore" method="_on_score_score_changed"]

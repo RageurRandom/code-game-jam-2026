@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://celswhm072xny"]
+
+[ext_resource type="Script" uid="uid://gkiygmk5pysk" path="res://scripts/enemy_spawners/base_enemy_spawner.gd" id="1_aly3a"]
+
+[node name="base_enemy_spawner" type="Node2D"]
+script = ExtResource("1_aly3a")
+enemy_path = "res://scenes/entity/beer_enemy.tscn"
