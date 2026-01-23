@@ -1,4 +1,4 @@
 extends Node
 
-signal enemy_hit
+signal enemy_hit #TODO parametrer
 signal enemy_death

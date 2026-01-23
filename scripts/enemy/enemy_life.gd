@@ -3,6 +3,8 @@ class_name EnemyLife extends Node
 @export var life:float = 100
 @export var sprite:Sprite2D
 @export var click_damage = 99
+@export var invincibility_time = 0.5
+var can_be_hit = true
 
 signal this_enemy_hit
 signal this_enemy_death
@@ -11,13 +13,17 @@ func _ready() -> void:
 	pass
 
 func _on_hit():
-	EventBus.enemy_hit.emit()
-	this_enemy_hit.emit()
-	print(life)
-	_process_damage()
-	if(life <= 0):
-		_on_enemy_death()
-
+	if can_be_hit:
+		can_be_hit = false
+		
+		EventBus.enemy_hit.emit()
+		this_enemy_hit.emit()
+		_process_damage()
+		if(life <= 0):
+			_on_enemy_death()
+		else:
+			await get_tree().create_timer(invincibility_time).timeout
+			can_be_hit = true
 
 func _on_enemy_death():
 	this_enemy_death.emit()

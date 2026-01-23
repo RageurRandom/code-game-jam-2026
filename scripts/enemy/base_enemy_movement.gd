@@ -1,7 +1,9 @@
 extends CharacterBody2D
 
+var speedFactor:float = 1.0
+
 func _ready() -> void:
-	pass
+	speedFactor = randf() + 1
 	
 func _process(delta: float) -> void:
-	var collision = move_and_collide(Vector2(1, 0)) #TODO
+	var collision = move_and_collide(Vector2(0, -1) * speedFactor) #TODO

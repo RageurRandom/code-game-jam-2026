@@ -10,7 +10,6 @@ func _ready() -> void:
 
 func _on_enemy_death():
 	score += enemy_death_value
-	print(score)
 	score_changed.emit(score)
 	
 	

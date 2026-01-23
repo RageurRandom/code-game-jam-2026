@@ -1,15 +1,17 @@
 [gd_scene load_steps=3 format=3 uid="uid://btlr4iomy7ch6"]
 
-[sub_resource type="GDScript" id="GDScript_rvajl"]
-script/source = "extends Area2D
-
-"
+[ext_resource type="Script" uid="uid://y64uwe4b1gly" path="res://scripts/bullets/base_bullet.gd" id="1_j2ebm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rvajl"]
 radius = 1.0
 
-[node name="BaseBullet" type="Area2D" groups=["bullet"]]
-script = SubResource("GDScript_rvajl")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="BaseBullet" type="ShapeCast2D" groups=["bullet"]]
 shape = SubResource("CircleShape2D_rvajl")
+target_position = Vector2(0, 0)
+script = ExtResource("1_j2ebm")
+
+[node name="DEBUG" type="Polygon2D" parent="."]
+z_index = 1
+position = Vector2(-2.3841858e-07, -2.3841858e-07)
+scale = Vector2(5, 5)
+polygon = PackedVector2Array(0, -1, -1, 0, 0, 1, 1, 0)
