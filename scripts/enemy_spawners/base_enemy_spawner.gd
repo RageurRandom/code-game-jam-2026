@@ -12,11 +12,13 @@ var enemy:PackedScene = null
 
 func _ready() -> void:
 	enemy = load(enemy_path)
-	
+	_spawn_loop()
+
+func _spawn_loop():
 	while true:
 		await get_tree().create_timer(timer).timeout
-		spawn()
-
+		if not get_tree().paused:  # Vérifie si le jeu n'est pas en pause
+			spawn()
 
 func spawn():
 	var new_enemy:Node2D = enemy.instantiate(PackedScene.GEN_EDIT_STATE_DISABLED)
