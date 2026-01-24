@@ -58,7 +58,7 @@ func _game_over():
 	gameOverLabel.show()
 	#TODO animation/GO scene
 	await get_tree().create_timer(5).timeout
-	get_tree().change_scene_to_file("res://scenes/title.tscn")
+	get_tree().change_scene_to_file("res://scenes/UI/title.tscn")
 
 func _clear_scene():
 	var tree = get_tree()
