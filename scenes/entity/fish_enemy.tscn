@@ -141,7 +141,7 @@ script = ExtResource("3_fsna1")
 [node name="EnemyLife" type="Node" parent="."]
 script = ExtResource("4_n7tng")
 life = 50.0
-score_value = 500
+score_value = 150
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ldt5m")

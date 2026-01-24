@@ -12,6 +12,7 @@ var trueSpeed:float = 1.0
 var initial_posi
 
 func _ready() -> void:
+	# TODO parameterize to allow different directions
 	self.apply_central_impulse(Vector2(initial_x_velocity + randf()*randomFactor,
 	 -initial_y_velocity + randf()*randomFactor))
 

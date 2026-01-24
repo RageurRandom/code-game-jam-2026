@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cw4kskbg76j5q"]
+
+[ext_resource type="Script" uid="uid://gkiygmk5pysk" path="res://scripts/enemy_spawners/base_enemy_spawner.gd" id="1_12gbg"]
+
+[node name="base_enemy_spawner" type="Node2D"]
+script = ExtResource("1_12gbg")
+timer = 10.0
+enemy_path = "res://scenes/entity/ovni_enemy.tscn"
+required_wave = 3
+randomize_x = false

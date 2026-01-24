@@ -9,7 +9,8 @@ signal this_enemy_hit
 signal this_enemy_death
 
 func _ready() -> void:
-	pass
+	await get_tree().create_timer(5).timeout
+	queue_free() # TODO this is a workaround, I need to find the true issue (phantom hitboxes)
 
 func on_hit(damage:float):
 	if can_be_hit:

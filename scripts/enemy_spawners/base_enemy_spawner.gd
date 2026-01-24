@@ -2,8 +2,10 @@ extends Node2D
 
 @export var timer:float = 5
 @export var enemy_path:String = "res://scenes/entity/base_enemy.tscn"
-
+@export var required_wave = 0
 @export var randomize_x = true
+
+var required_wave_reached = false
 
 const MAX_X = 574 - 32
 const MIN_X = 32
@@ -17,8 +19,21 @@ func _ready() -> void:
 func _spawn_loop():
 	while true:
 		await get_tree().create_timer(timer).timeout
-		if not get_tree().paused:  # Vérifie si le jeu n'est pas en pause
+		if _can_spawn():
 			spawn()
+
+
+func _can_spawn()->bool:
+	if get_tree().paused: return false
+	
+	if required_wave_reached: return true
+	
+	if  required_wave <= DifficultyManager.wave_number:
+		required_wave_reached = true
+		return true
+		
+	return false
+
 
 func spawn():
 	var new_enemy:Node2D = enemy.instantiate(PackedScene.GEN_EDIT_STATE_DISABLED)

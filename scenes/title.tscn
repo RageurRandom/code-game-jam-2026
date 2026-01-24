@@ -95,7 +95,7 @@ metadata/_custom_type_script = "uid://dn2tf258rudu3"
 
 [node name="Juicy_effect_scale" type="Node" parent="on_credits" node_paths=PackedStringArray("target_node")]
 script = ExtResource("3_pyl7j")
-target_node = NodePath("../../CenterContainer2")
+target_node = NodePath("../../CenterContainer3")
 target_scale = Vector3(2.2, 2.2, 1)
 curve = SubResource("Curve_b3w7a")
 duration = 0.61

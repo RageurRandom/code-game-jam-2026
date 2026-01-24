@@ -19,6 +19,7 @@ script = ExtResource("3_w7fs4")
 
 [node name="EnemyLife" type="Node" parent="."]
 script = ExtResource("1_lin2w")
+score_value = 25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -13)

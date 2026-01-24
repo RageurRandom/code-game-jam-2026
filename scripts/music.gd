@@ -6,6 +6,13 @@ extends AudioStreamPlayer
 ]
 
 func _ready() -> void:
+	_play_random()
+
+
+func _on_finished() -> void:
+	_play_random()
+
+func _play_random():
 	var selected_music = music_array.pick_random()
 	stream = selected_music
 	play()

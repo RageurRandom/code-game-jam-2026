@@ -13,5 +13,6 @@ func _on_enemy_death(score_won:int):
 	score_changed.emit(score)
 	
 func spend_score(amount:int):
+	#TODO precon to avoid spending more than owned
 	score -= amount
 	score_changed.emit(score)
