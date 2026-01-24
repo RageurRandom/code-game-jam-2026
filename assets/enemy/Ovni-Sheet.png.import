@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwi7t5rcktl4l"
-path="res://.godot/imported/icon.png-7f71c46195796023d786f07146eb6c8b.ctex"
+uid="uid://cm15ahxqy2en7"
+path="res://.godot/imported/Ovni-Sheet.png-7fa380376fd9d05e67c995a5b4aff7fd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/midi/icon.png"
-dest_files=["res://.godot/imported/icon.png-7f71c46195796023d786f07146eb6c8b.ctex"]
+source_file="res://assets/enemy/Ovni-Sheet.png"
+dest_files=["res://.godot/imported/Ovni-Sheet.png-7fa380376fd9d05e67c995a5b4aff7fd.ctex"]
 
 [params]
 

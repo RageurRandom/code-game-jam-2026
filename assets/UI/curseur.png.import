@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dr1vrkk4entao"
-path="res://.godot/imported/midi.png-b65a99687857c5d01ca4316bb0012379.ctex"
+uid="uid://d2dyj52ul4blu"
+path="res://.godot/imported/curseur.png-1824f70529f3a02ee896472c8e30522b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/midi_import/icons/midi.png"
-dest_files=["res://.godot/imported/midi.png-b65a99687857c5d01ca4316bb0012379.ctex"]
+source_file="res://assets/UI/curseur.png"
+dest_files=["res://.godot/imported/curseur.png-1824f70529f3a02ee896472c8e30522b.ctex"]
 
 [params]
 

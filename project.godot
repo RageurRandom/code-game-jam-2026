@@ -13,7 +13,7 @@ config_version=5
 config/name="Game Jam 2026"
 run/main_scene="uid://dwc7q6yury6x0"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://assets/icon.svg"
 
 [autoload]
 
@@ -25,6 +25,8 @@ JuicyPersist="*res://addons/juicy-effect/Logic/autoload/Juicy_persist.gd"
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/stretch/scale=2.0
+mouse_cursor/custom_image="uid://d2dyj52ul4blu"
+mouse_cursor/custom_image_hotspot=Vector2(25, 25)
 
 [dotnet]
 

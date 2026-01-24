@@ -11,6 +11,12 @@ var buyable_weapons = [
 		"price": 100,
 		"object":ShotgunWeapon.new(),
 		"icon":preload("res://assets/weapon/icons/shotgun_icon.tres")
+	},
+	{
+		"name":"Zapper",
+		"price": 1_000,
+		"object":ZapperWeapon.new(),
+		"icon":preload("res://assets/weapon/icons/zapper_icon.tres")
 	}
 ]
 

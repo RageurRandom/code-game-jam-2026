@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://qnd2bsm2ncj2"]
+
+[ext_resource type="Script" uid="uid://y64uwe4b1gly" path="res://scripts/bullets/base_bullet.gd" id="1_ka5qq"]
+[ext_resource type="AudioStream" uid="uid://dp6pnsd7yutuy" path="res://assets/sounds/zap-gun.wav" id="2_p6tha"]
+[ext_resource type="SpriteFrames" uid="uid://cvkarug6doa50" path="res://assets/anim/zapper_bullet_frames.tres" id="3_erxx6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_erxx6"]
+radius = 5.0
+
+[node name="BaseBullet" type="ShapeCast2D" node_paths=PackedStringArray("sprite")]
+shape = SubResource("CircleShape2D_erxx6")
+target_position = Vector2(0, 0)
+script = ExtResource("1_ka5qq")
+sfx = ExtResource("2_p6tha")
+sprite = NodePath("AnimatedSprite2D")
+damage = 500
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+sprite_frames = ExtResource("3_erxx6")

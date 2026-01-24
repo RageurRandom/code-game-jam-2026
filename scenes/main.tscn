@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://boskggorwimm3"]
+[gd_scene load_steps=18 format=3 uid="uid://boskggorwimm3"]
 
 [ext_resource type="Script" uid="uid://35cesntifdyd" path="res://scripts/HUD/score_display.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://0mo1t8hxe8tf" path="res://scenes/entity/base_enemy.tscn" id="1_o5qli"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://tsb1lnxosj46" path="res://scripts/score_tracker.gd" id="3_sugp2"]
 [ext_resource type="Script" uid="uid://pfgonfr6d5du" path="res://scripts/HUD/weapon_shop.gd" id="4_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://lxh1031e772h" path="res://scenes/spawners/base_enemy_spawner.tscn" id="4_jyhfs"]
+[ext_resource type="SpriteFrames" uid="uid://cfvvgl66toysv" path="res://assets/anim/timer_frames.tres" id="5_muem4"]
 [ext_resource type="Texture2D" uid="uid://drqmurnfprnab" path="res://assets/background/background_bleu.png" id="5_tbgi4"]
 [ext_resource type="Script" uid="uid://braouel88xdy1" path="res://scripts/sound.gd" id="5_tipki"]
 [ext_resource type="Script" uid="uid://cooyac2pasvnt" path="res://scripts/shoot_manager.gd" id="6_tefeu"]
@@ -15,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cn0t0ci0dpfod" path="res://assets/background/grass.png" id="11_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://bl2geixfl3ad4" path="res://scenes/entity/fish_enemy.tscn" id="11_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://celswhm072xny" path="res://scenes/spawners/fish_enemy_spawner.tscn" id="12_eb6dy"]
+[ext_resource type="Script" uid="uid://b6nruc8xeudrc" path="res://scripts/timer.gd" id="17_muem4"]
 
 [node name="Main" type="Node2D"]
 
@@ -56,6 +58,7 @@ texture_normal = ExtResource("2_a8y0u")
 
 [node name="pause_menu" type="TabContainer" parent="HUD"]
 process_mode = 3
+visible = false
 clip_contents = true
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 1
@@ -96,6 +99,18 @@ layout_mode = 2
 item_count = 1
 item_0/text = "TODO"
 metadata/_tab_index = 1
+
+[node name="TimerSprite" type="AnimatedSprite2D" parent="HUD"]
+position = Vector2(262, 23)
+sprite_frames = ExtResource("5_muem4")
+speed_scale = 0.0
+
+[node name="TimeLabel" type="Label" parent="HUD/TimerSprite"]
+offset_left = 22.0
+offset_top = -10.0
+offset_right = 62.0
+offset_bottom = 13.0
+text = "34"
 
 [node name="balloon" parent="." instance=ExtResource("1_o5qli")]
 position = Vector2(139, 430)
@@ -160,6 +175,14 @@ position = Vector2(-31, 207)
 position = Vector2(269, 256)
 timer = 7.0
 randomize_x = true
+
+[node name="TimeManager" type="Timer" parent="." node_paths=PackedStringArray("timeLabel", "timerSprite")]
+process_mode = 1
+wait_time = 37.0
+autostart = true
+script = ExtResource("17_muem4")
+timeLabel = NodePath("../HUD/TimerSprite/TimeLabel")
+timerSprite = NodePath("../HUD/TimerSprite")
 
 [connection signal="pressed" from="HUD/upgrade_menu" to="HUD/pause_menu" method="_on_upgrade_menu_pressed"]
 [connection signal="item_selected" from="HUD/pause_menu/weapon_shop" to="HUD/pause_menu/weapon_shop" method="_on_item_selected"]
