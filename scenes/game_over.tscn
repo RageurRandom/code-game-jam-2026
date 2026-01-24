@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnhpe4o6sq6c7"]
+
+[ext_resource type="Script" uid="uid://88f8uor8s76w" path="res://scripts/UI/game_over.gd" id="1_tbwuq"]
+[ext_resource type="Texture2D" uid="uid://drqmurnfprnab" path="res://assets/background/background_bleu.png" id="1_wqhvx"]
+[ext_resource type="Texture2D" uid="uid://cn0t0ci0dpfod" path="res://assets/background/grass.png" id="2_tbwuq"]
+[ext_resource type="Script" uid="uid://dn571xlekbuw5" path="res://scenes/game_over_grass.gd" id="3_racf3"]
+
+[node name="GameOver" type="Node2D"]
+script = ExtResource("1_tbwuq")
+
+[node name="sky" type="Sprite2D" parent="."]
+z_index = -10
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("1_wqhvx")
+centered = false
+
+[node name="grass" type="Node2D" parent="."]
+script = ExtResource("3_racf3")
+
+[node name="shitty_grass" type="Sprite2D" parent="grass"]
+z_index = -5
+texture_repeat = 2
+position = Vector2(445, 212)
+scale = Vector2(1.15625, 1.25)
+texture = ExtResource("2_tbwuq")
+
+[node name="shitty_grass2" type="Sprite2D" parent="grass"]
+z_index = -5
+texture_repeat = 2
+position = Vector2(67, 212)
+scale = Vector2(1.216, 1.25)
+texture = ExtResource("2_tbwuq")
