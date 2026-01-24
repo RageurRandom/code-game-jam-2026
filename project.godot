@@ -37,7 +37,7 @@ project/assembly_name="Game Jam 2026"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/juicy-effect/plugin.cfg", "res://addons/midi_import/plugin.cfg")
+enabled=PackedStringArray("res://addons/juicy-effect/plugin.cfg")
 
 [file_customization]
 

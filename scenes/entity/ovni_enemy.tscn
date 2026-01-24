@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://bqx8q7u1o36gn" path="res://scripts/enemy/enemy_life.gd" id="4_11ygv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ldt5m"]
-size = Vector2(27, 26)
+size = Vector2(27, 27)
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 input_pickable = true
@@ -15,7 +15,8 @@ script = ExtResource("1_lbojf")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_lbojf")
-animation = &"pop"
+animation = &"damaged"
+frame_progress = 0.14529885
 script = ExtResource("3_8xs4x")
 
 [node name="EnemyLife" type="Node" parent="."]
@@ -24,7 +25,7 @@ life = 500.0
 score_value = 500
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -2)
+position = Vector2(-0.5, -1.5)
 shape = SubResource("RectangleShape2D_ldt5m")
 
 [connection signal="input_event" from="." to="EnemyLife" method="_on_enemy_input_event"]
